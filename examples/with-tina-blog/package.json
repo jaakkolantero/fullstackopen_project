@@ -1,0 +1,48 @@
+{
+  "name": "foresry-starter-blog-next",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with TinaCMS & Next",
+  "license": "MIT",
+  "version": "0.1.0",
+  "author": "@kendallstraut",
+  "scripts": {
+    "dev": "next src",
+    "develop": "concurrently \"next src\" \"tina-git-server 3001\"",
+    "build": "next build src",
+    "start": "next start src",
+    "export": "next export src",
+    "deploy": "yarn build && yarn export",
+    "forestry-preview": "next src -p 8080 -H 0.0.0.0"
+  },
+  "dependencies": {
+    "@tinacms/api-git": "^0.4.4",
+    "@tinacms/git-client": "^0.4.1",
+    "concurrently": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "glob": "^7.1.6",
+    "gray-matter": "^4.0.2",
+    "moment": "^2.24.0",
+    "next": "^9.0.2",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^3.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-tinacms": "^0.9.0",
+    "styled-components": "^4.4.1",
+    "tinacms": "^0.9.0",
+    "typescript": "^3.7.2",
+    "webpack": "^4.37.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "keywords": [
+    "next",
+    "tinacms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kendallstrautman/brevifolia-next-tinacms"
+  }
+}
