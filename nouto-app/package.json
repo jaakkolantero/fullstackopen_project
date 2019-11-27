@@ -6,16 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "update:packages": "ncu -u && npm install"
   },
   "dependencies": {
-    "next": "9.1.2",
-    "react": "16.11.0",
-    "react-dom": "16.11.0"
+    "next": "9.1.4",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
   },
   "devDependencies": {
     "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "^3.0.2"
+    "cz-conventional-changelog": "^3.0.2",
+    "npm-check-updates": "^3.2.2"
   },
   "config": {
     "commitizen": {
