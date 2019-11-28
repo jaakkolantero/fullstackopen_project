@@ -6,4 +6,6 @@
 | 22.10. | 2    | TinaCMS dokumentaation/lähdekoodin lukemista.                     |
 | 31.10. | 2    | Projektin starttailua. Next.js asennus. Issueiden kirjoittelua    |
 | 3.11.  | 1    | Vaihdetaan CMS netlifyCMS:ksi. dokumentaation lukemista.          |
-|  yht   | 5    |                                                                   |
+| 27.11. | 8    | Create first draft of the actual restaurant page. Learn Figma     |
+| 27.11. | 2    | Start writing diary                                               |
+|  yht   | 16   |                                                                   |
