@@ -21,3 +21,7 @@ I still haven't decided what cms to use but checkout and kitchen features will b
 So yesterday learned some figma and created draft for the restaurant page. Didn't add any colors at this point. Still some features missing like Titles and footer but going to create a mock for this draft and iterate from there.
 
 [Figma draft](https://www.figma.com/proto/fJvnXlFfbbn6x29xQIYKDO/Pizza-italia?node-id=5421%3A876&scaling=scale-down)
+
+## 28.11.
+
+Had some random problems with @zeit/next-css last night so restructured the whole project. Also stumbled upon a great starter [product-boilerplate](https://github.com/nice-boys/product-boilerplate). There is so much new stuff so I will look in to them gradually and add the needed parts to the project.
