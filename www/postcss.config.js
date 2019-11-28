@@ -4,7 +4,8 @@ const postcssPresetEnv = require("postcss-preset-env");
 module.exports = {
   plugins: [
     tailwindcss("./tailwind.config.js"),
-    ...(process.env.NODE_ENV === `production`
+    require("postcss-easy-import"),
+    ...(process.env.NODE_ENV !== `development`
       ? [
           require("@fullhuman/postcss-purgecss")({
             content: ["./src/**/*.js"],
@@ -13,11 +14,10 @@ module.exports = {
           }),
           require("autoprefixer"),
           require("cssnano"),
+          postcssPresetEnv({
+            stage: 0,
+          }),
         ]
       : []),
-    require("postcss-easy-import"),
-    postcssPresetEnv({
-      stage: 0,
-    }),
   ],
 };
