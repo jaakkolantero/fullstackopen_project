@@ -25,3 +25,7 @@ So yesterday learned some figma and created draft for the restaurant page. Didn'
 ## 28.11.
 
 Had some random problems with @zeit/next-css last night so restructured the whole project. Also stumbled upon a great starter [product-boilerplate](https://github.com/nice-boys/product-boilerplate). There is so much new stuff so I will look in to them gradually and add the needed parts to the project.
+
+## 29.11. - 1.12.
+
+A lot of fighting with react-spring and react-use-gesture but atleast I feel really confident using them now. As a note to myself: don't try to use react-use-gesture with absolute positioning elements. Got really erratic behavior. Negative margin seems to bee the way to go.
