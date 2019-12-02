@@ -3,7 +3,11 @@ import App from "next/app";
 import Head from "next/head";
 import "../styles/index.css";
 
-const Layout = ({ children }) => {
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>

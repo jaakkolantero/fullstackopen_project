@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useDrag } from "react-use-gesture";
+import { clamp, isBetween } from "../../utils";
 
-const clamp = (num, clamp, higher) =>
-  higher ? Math.min(Math.max(num, clamp), higher) : Math.min(num, clamp);
+export interface WithCounterProps {
+  children: React.ReactNode;
+  count?: number;
+  onCountChange?: (count: number) => void;
+}
 
-const isBetween = (value, min, max) => Math.min(max, Math.max(min, value));
-
-const WithCounter = ({ children, onCountChange, count: newCount }) => {
+const WithCounter = ({
+  children,
+  onCountChange,
+  count: newCount,
+}: WithCounterProps) => {
   const [count, setCount] = useState(0);
   const increment = () => setCount(prevCount => Math.min(prevCount + 1, 99));
   const decrement = () => setCount(prevCount => Math.max(prevCount - 1, 0));
@@ -16,7 +22,11 @@ const WithCounter = ({ children, onCountChange, count: newCount }) => {
     onCountChange && onCountChange(count);
   }, [count]);
 
-  useEffect(() => newCount && setCount(isBetween(newCount, 0, 99)), [newCount]);
+  useEffect(() => {
+    if (newCount) {
+      setCount(isBetween(newCount, 0, 99));
+    }
+  }, [newCount]);
 
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   const bind = useDrag(({ down, movement, memo = [x.getValue()] }) => {
