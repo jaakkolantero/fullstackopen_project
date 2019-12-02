@@ -1,11 +1,11 @@
-var tailwindcss = require("tailwindcss");
+const tailwindcss = require("tailwindcss");
 const postcssPresetEnv = require("postcss-preset-env");
 
 module.exports = {
   plugins: [
     tailwindcss("./tailwind.config.js"),
     require("postcss-easy-import"),
-    ...(process.env.NODE_ENV !== `development`
+    ...(process.env.NODE_ENV !== "development"
       ? [
           require("@fullhuman/postcss-purgecss")({
             content: ["./src/**/*.js"],
