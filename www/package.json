@@ -5,7 +5,8 @@
     "start": "next start",
     "update:packages": "ncu -u && npm install",
     "init:tailwind": "npx tailwind init",
-    "build:tailwind": "npx tailwind build styles/index.css -o styles/tailwind.css"
+    "build:tailwind": "npx tailwind build styles/index.css -o styles/tailwind.css",
+    "lint:all": "npx eslint --ext .js,.ts ."
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -20,10 +21,16 @@
     "@fullhuman/postcss-purgecss": "^1.3.0",
     "@types/react": "^16.9.13",
     "@types/styled-components": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
     "autoprefixer": "^9.7.2",
     "babel-plugin-macros": "^2.7.1",
     "babel-plugin-styled-components": "^1.10.6",
     "cssnano": "^4.1.10",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.17.0",
     "npm-check-updates": "^3.2.2",
     "postcss-easy-import": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
