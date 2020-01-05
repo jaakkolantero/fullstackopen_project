@@ -13,7 +13,6 @@ type MenuProps = {
 };
 
 const Menu = ({ items }: MenuProps) => {
-  if (items) console.log("items", items);
   return (
     <section className="bg-gray-100 flex flex-col items-center w-full px-8 mt-16 pb-6">
       <div className="max-w-sm w-full">
