@@ -1,6 +1,7 @@
 import React from "react";
+import { formatPrice } from "../utils";
 
-const OrderDetails = () => {
+const OrderDetails = ({ total }) => {
   return (
     <div className="flex flex-col w-full mb-6 text-gray-600 px-8 mt-3">
       <div className="mb-3">
@@ -9,7 +10,10 @@ const OrderDetails = () => {
       </div>
       <div className="w-full">
         Total{" "}
-        <mark className="bg-transparent text-gray-700 text-xl">20,90</mark> €
+        <mark className="bg-transparent text-gray-700 text-xl">
+          {formatPrice(total)}
+        </mark>{" "}
+        €
       </div>
       <button className="self-center bg-gray-600 text-white py-3 px-24 mt-6 rounded hover:bg-gray-500">
         Continue
