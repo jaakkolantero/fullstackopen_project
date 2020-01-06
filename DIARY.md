@@ -29,3 +29,11 @@ Had some random problems with @zeit/next-css last night so restructured the whol
 ## 29.11. - 1.12.
 
 A lot of fighting with react-spring and react-use-gesture but atleast I feel really confident using them now. As a note to myself: don't try to use react-use-gesture with absolute positioning elements. Got really erratic behavior. Negative margin seems to bee the way to go.
+
+## 3.12.
+
+Starting to work with graphql server.
+
+## 4.1. - 5.1.
+
+mock graphql server. Implement basic functions of the menu and cart. Started reading [https://basecamp.com/shapeup](https://basecamp.com/shapeup). Seems really interesting so decided to start doing my own development in similar way.
