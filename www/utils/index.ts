@@ -5,4 +5,4 @@ export const isBetween = (value: number, min: number, max: number): number =>
   Math.min(max, Math.max(min, value));
 
 export const formatPrice = (num: number) =>
-  num ? num.toFixed(2).replace(/\.00$/, "") : null;
+  num ? num.toFixed(2).replace(/\.00$/, "") : "0";
