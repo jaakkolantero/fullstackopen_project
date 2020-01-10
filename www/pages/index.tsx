@@ -17,7 +17,7 @@ export interface CartItem extends MenuItem {
 }
 interface CartState extends Array<CartItem> {}
 
-type CartAction =
+export type CartAction =
   | { type: "add"; payload: MenuItem }
   | { type: "remove"; payload: { id: string } }
   | { type: "update"; payload: CartItem };
@@ -75,7 +75,7 @@ const Index = () => {
       <Heading />
       <Menu items={data.menuItems} onAddToCart={handleAddToCart} />
       <Cart items={cart} onAmountChange={handleAmountChange} />
-      <OrderDetails cart={cart} />
+      <OrderDetails cart={cart} updateCartItem={dispatchCart} />
     </>
   );
 };

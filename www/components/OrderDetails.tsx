@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { formatPrice } from "../utils";
-import useModal from "../hooks/useModal";
-import Modal from "./OrderDetails/Modal";
-import { CartItem } from "../pages";
+import { CartItem, CartAction } from "../pages";
 import Checkout from "./OrderDetails/Checkout";
 
 interface OrderDetailsProps {
   cart: CartItem[];
+  updateCartItem: (action: CartAction) => void;
 }
 
-const OrderDetails = ({ cart }: OrderDetailsProps) => {
+const OrderDetails = ({ cart, updateCartItem }: OrderDetailsProps) => {
   const [total, setTotal] = useState(0);
   useEffect(() => {
     let totalPrice = 0;
@@ -32,7 +31,7 @@ const OrderDetails = ({ cart }: OrderDetailsProps) => {
         </mark>{" "}
         €
       </div>
-      <Checkout cart={cart} total={total} />
+      <Checkout cart={cart} total={total} updateCartItem={updateCartItem} />
     </div>
   );
 };

@@ -1,8 +1,16 @@
 import React from "react";
 import CheckoutItem from "./CheckoutItem";
 import { formatPrice } from "../../utils";
+import { CartItem, CartAction } from "../../pages";
 
-const CheckoutModal = ({ cart, close, total }) => {
+interface CheckoutModalProps {
+  cart: CartItem;
+  close: () => void;
+  total: string;
+  updateCartItem: (cart: CartAction) => void;
+}
+
+const CheckoutModal = ({ cart, close, total, updateCartItem }) => {
   console.log("cart", cart);
   return (
     <>
@@ -22,7 +30,7 @@ const CheckoutModal = ({ cart, close, total }) => {
             </div>
             {cart.map(item => (
               <div key={`${item.id}-checkoutModal`}>
-                <CheckoutItem {...item} />
+                <CheckoutItem item={item} updateCartItem={updateCartItem} />
                 <div className="mb-3" />
               </div>
             ))}

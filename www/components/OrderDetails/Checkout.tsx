@@ -3,7 +3,7 @@ import useModal from "../../hooks/useModal";
 import Modal from "./Modal";
 import CheckoutModal from "./CheckoutModal";
 
-const Checkout = ({ cart, total }) => {
+const Checkout = ({ cart, total, updateCartItem }) => {
   const { open: openCheckout, close: closeCheckout } = useModal("checkout");
 
   return (
@@ -15,7 +15,12 @@ const Checkout = ({ cart, total }) => {
         Checkout
       </button>
       <Modal name="checkout">
-        <CheckoutModal cart={cart} close={closeCheckout} total={total} />
+        <CheckoutModal
+          cart={cart}
+          close={closeCheckout}
+          total={total}
+          updateCartItem={updateCartItem}
+        />
       </Modal>
     </>
   );
