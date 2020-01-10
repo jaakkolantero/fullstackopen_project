@@ -5,11 +5,16 @@ import CheckoutModal from "./CheckoutModal";
 
 const Checkout = ({ cart, total, updateCartItem }) => {
   const { open: openCheckout, close: closeCheckout } = useModal("checkout");
+  const handleOpenCheckout = () => {
+    if (cart.length) {
+      openCheckout();
+    }
+  };
 
   return (
     <>
       <button
-        onClick={openCheckout}
+        onClick={handleOpenCheckout}
         className="self-center bg-gray-600 text-white py-3 px-24 mt-6 rounded hover:bg-gray-500"
       >
         Checkout

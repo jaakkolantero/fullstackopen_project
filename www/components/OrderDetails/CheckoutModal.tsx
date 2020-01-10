@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CheckoutItem from "./CheckoutItem";
 import { formatPrice } from "../../utils";
 import { CartItem, CartAction } from "../../pages";
@@ -11,7 +11,11 @@ interface CheckoutModalProps {
 }
 
 const CheckoutModal = ({ cart, close, total, updateCartItem }) => {
-  console.log("cart", cart);
+  useEffect(() => {
+    if (cart.length < 1) {
+      close();
+    }
+  }, [cart]);
   return (
     <>
       <div className="flex flex-col justify-center items-center fixed inset-0 z-50 w-full h-full bg-modal">
