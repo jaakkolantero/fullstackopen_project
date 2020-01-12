@@ -17,7 +17,7 @@ export interface CartItem extends MenuItem {
 }
 interface CartState extends Array<CartItem> {}
 
-type CartAction =
+export type CartAction =
   | { type: "add"; payload: MenuItem }
   | { type: "remove"; payload: { id: string } }
   | { type: "update"; payload: CartItem };
@@ -47,7 +47,6 @@ const Index = () => {
   const query = `{menuItems{id,name,ingredients,price}}`;
   const { data, error } = useSWR<Query>(query, query => request(API, query));
   const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
-  const [total, setTotal] = useState(0);
 
   const handleAddToCart = (menuItem: MenuItem) => {
     const itemInCart = cart.find(({ id }) => id === menuItem.id);
@@ -68,14 +67,6 @@ const Index = () => {
     });
   };
 
-  useEffect(() => {
-    let totalPrice = 0;
-    for (const item of cart) {
-      totalPrice += item.price[0] * item.amount;
-    }
-    setTotal(totalPrice);
-  }, [cart]);
-
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   return (
@@ -84,7 +75,7 @@ const Index = () => {
       <Heading />
       <Menu items={data.menuItems} onAddToCart={handleAddToCart} />
       <Cart items={cart} onAmountChange={handleAmountChange} />
-      <OrderDetails total={total} />
+      <OrderDetails cart={cart} updateCartItem={dispatchCart} />
     </>
   );
 };
