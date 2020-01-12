@@ -1,0 +1,20 @@
+{
+  "name": "pizza-italia",
+  "version": 2,
+  "github": {
+    "enabled": true
+  },
+  "builds": [
+    {
+      "src": "www/next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "www/$1",
+      "continue": true
+    }
+  ]
+}
