@@ -41,6 +41,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.17.0",
+    "frontmatter-markdown-loader": "^3.1.0",
     "graphql-tools": "^4.0.6",
     "npm-check-updates": "^3.2.2",
     "postcss-easy-import": "^3.0.0",
