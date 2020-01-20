@@ -18,7 +18,7 @@ const CheckoutModal = ({ cart, close, total, updateCartItem }) => {
   }, [cart]);
   return (
     <>
-      <div className="flex flex-col justify-center items-center fixed inset-0 z-50 w-full h-full bg-modal">
+      <div className="flex flex-col justify-center items-center fixed inset-0 z-50 w-full h-full bg-modal mx-4">
         <div className="w-full sm:max-w-lg sm:rounded max-h-screen overflow-auto bg-white">
           <div className="py-2 px-4">
             <div className="sticky top-0 w-full flex justify-between mb-3">
@@ -43,8 +43,8 @@ const CheckoutModal = ({ cart, close, total, updateCartItem }) => {
               <span className="text-black">{formatPrice(total)}€</span>
             </div>
           </div>
-          <div className="flex flex-col w-full bg-gray-900 text-white pt-8 pb-3 px-6 rounded-t">
-            <div className="flex justify-between items-top">
+          <div className="flex flex-col w-full bg-gray-900 text-white pt-8 pb-3 rounded-t">
+            <div className="flex justify-between items-top px-6">
               <div className="flex-shrink-0">
                 <div>
                   <label
@@ -98,7 +98,7 @@ const CheckoutModal = ({ cart, close, total, updateCartItem }) => {
               </div>
             </div>
 
-            <button className="rounded bg-green-700 text-green-300 hover:bg-green-800 py-2 mt-6">
+            <button className="rounded bg-green-700 text-green-300 hover:bg-green-800 py-2 mt-6 mx-8">
               Order & Pickup
             </button>
           </div>

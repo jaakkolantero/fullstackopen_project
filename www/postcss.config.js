@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     require("postcss-easy-import"),
     tailwindcss("./tailwind.config.js"),
-    ...(process.env.NODE_ENV === "development"
+    ...(process.env.NODE_ENV !== "development"
       ? [
           require("@fullhuman/postcss-purgecss")({
             content: [
