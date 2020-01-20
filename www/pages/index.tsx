@@ -10,8 +10,6 @@ import { MenuItem } from "../components/Menu/MenuItem";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { menuOptions } from "../contentConfiguration/menu";
 
-const API = process.env.GRAPHQL_API;
-
 const initialCart = [];
 
 export interface CartItem extends MenuItem {
@@ -78,9 +76,6 @@ const Index = ({ menu }) => {
       payload: cartItem,
     });
   };
-
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
   return (
     <>
       <Navigation />
