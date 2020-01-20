@@ -12,13 +12,13 @@ const CartItem = ({ item }: CartItemProps) => {
       <div className="flex flex-col items-start">
         <div className="capitalize text-2xl text-gray-800">{item.name}</div>
         <div className="italic text-gray-700 text-sm pl-1">
-          {item.ingredients.join(" ")}
+          {item.ingredients.map(ingredient => ingredient.name).join(" ")}
         </div>
       </div>
       <div className="flex flex-row items-baseline">
         <div className="text-sm ml-3">x{item.amount}</div>
         <div className="font-bold text-xl text-gray-800 mt-1 ml-3">
-          {formatPrice(item.price[0])}€
+          {item?.price}€
         </div>
       </div>
     </div>

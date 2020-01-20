@@ -2,6 +2,7 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import { Tina, TinaCMS } from "tinacms";
+import { GitClient } from "@tinacms/git-client";
 import "../styles/index.css";
 
 export interface LayoutProps {
@@ -26,6 +27,9 @@ export default class MyApp extends App {
     super(props);
     // initialize the cms
     this.cms = new TinaCMS();
+    const client = new GitClient("http://localhost:3001/___tina");
+    // register client with the cms
+    this.cms.registerApi("git", client);
   }
   render() {
     const { Component, pageProps } = this.props;
