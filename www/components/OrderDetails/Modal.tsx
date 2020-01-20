@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 import FocusLock, { MoveFocusInside } from "react-focus-lock";
 
@@ -9,9 +9,10 @@ interface ModalProps {
 }
 
 const Modal = ({ children, name }: ModalProps) => {
+  const router = useRouter();
   return (
     <>
-      {Router?.query?.modal === name ? (
+      {router?.query?.modal === name ? (
         <>
           <RemoveScrollBar />
           <FocusLock>
