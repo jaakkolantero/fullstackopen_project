@@ -1,2 +1,4 @@
 node_modules/
 .directory
+.ssh/id_rsa
+api/.ssh/id_rsa
