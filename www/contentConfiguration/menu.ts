@@ -1,7 +1,6 @@
 import { v4 } from "uuid";
 
 export const menuOptions = (menu, cms) => {
-  console.log("menu.fileRelativePath", menu.fileRelativePath);
   return {
     id: menu.fileRelativePath, // needs to be unique
     label: "Menu",
@@ -71,7 +70,6 @@ export const menuOptions = (menu, cms) => {
 
     // save & commit the file when the "save" button is pressed
     onSubmit(data) {
-      console.log("data.fileRelativePath", data.fileRelativePath);
       return cms.api.git.writeToDisk({
         fileRelativePath: data.fileRelativePath,
         content: JSON.stringify(data),
