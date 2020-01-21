@@ -13,7 +13,7 @@ const CheckoutItem = ({ item, updateCartItem }: CheckoutItemProps) => {
         <div className="flex flex-col items-start flex-shrink-0">
           <div className="text-black text-base">{item.name}</div>
           <div className="text-sm text-gray-600">
-            {item.ingredients.join(" ")}
+            {item.ingredients.map(ingredient => ingredient.name).join(" ")}
           </div>
         </div>
         <div className="flex items-baseline justify-end w-full mr-2 text-black">

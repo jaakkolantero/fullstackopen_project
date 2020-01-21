@@ -7,8 +7,8 @@ import Menu from "../components/Menu";
 import Cart from "../components/Cart";
 import OrderDetails from "../components/OrderDetails";
 import { MenuItem } from "../components/Menu/MenuItem";
-
-const API = process.env.GRAPHQL_API;
+import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
+import { menuOptions } from "../contentConfiguration/menu";
 
 const initialCart = [];
 
@@ -43,10 +43,20 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const Index = () => {
-  const query = `{menuItems{id,name,ingredients,price}}`;
-  const { data, error } = useSWR<Query>(query, query => request(API, query));
+const Index = ({ menu }) => {
   const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
+
+  const cms = useCMS();
+  const [menuData, menuState] = useLocalForm(menuOptions(menu, cms));
+
+  const writeToDisk = React.useCallback(formState => {
+    cms.api.git.onChange({
+      fileRelativePath: formState.fileRelativePath,
+      content: JSON.stringify(formState.values),
+    });
+  }, []);
+
+  useWatchFormValues(menuState, writeToDisk);
 
   const handleAddToCart = (menuItem: MenuItem) => {
     const itemInCart = cart.find(({ id }) => id === menuItem.id);
@@ -66,18 +76,24 @@ const Index = () => {
       payload: cartItem,
     });
   };
-
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
   return (
     <>
       <Navigation />
       <Heading />
-      <Menu items={data.menuItems} onAddToCart={handleAddToCart} />
+      <Menu items={menuData.menuItems} onAddToCart={handleAddToCart} />
       <Cart items={cart} onAmountChange={handleAmountChange} />
       <OrderDetails cart={cart} updateCartItem={dispatchCart} />
     </>
   );
+};
+
+Index.getInitialProps = function(ctx) {
+  let content = require(`../content/menu.json`);
+  return {
+    menu: {
+      ...content,
+    },
+  };
 };
 
 export default Index;
