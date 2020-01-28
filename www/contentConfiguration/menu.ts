@@ -30,6 +30,7 @@ export const menuOptions = (menu, cms) => {
         }),
         defaultItem: () => ({
           name: "New Item",
+          price: "0",
           id: v4(),
         }),
         fields: [

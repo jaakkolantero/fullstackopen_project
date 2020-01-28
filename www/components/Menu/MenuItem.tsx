@@ -18,7 +18,10 @@ type MenuItemProps = {
 
 const _MenuItem = ({ item, onAddToCart }: MenuItemProps) => {
   return (
-    <div className="flex flex-col w-full items-start bg-white rounded shadow py-2 px-3 mt-6">
+    <div
+      key={item.id}
+      className="flex flex-col w-full max-w-xs items-start py-2 px-3"
+    >
       <div className="capitalize text-2xl text-gray-800">{item?.name}</div>
       <div className="italic text-gray-700 text-sm pl-1">
         {item?.ingredients?.map(ingredient => ingredient.name).join(" ")}
@@ -30,6 +33,7 @@ const _MenuItem = ({ item, onAddToCart }: MenuItemProps) => {
       >
         Add to cart
       </button>
+      <hr className="mt-2 w-full border-gray-200 border" />
     </div>
   );
 };

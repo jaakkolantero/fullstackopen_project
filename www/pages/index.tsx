@@ -80,7 +80,11 @@ const Index = ({ menu }) => {
     <>
       <Navigation />
       <Heading />
-      <Menu items={menuData.menuItems} onAddToCart={handleAddToCart} />
+      <Menu
+        items={menuData.menuItems}
+        title={menuData.title}
+        onAddToCart={handleAddToCart}
+      />
       <Cart items={cart} onAmountChange={handleAmountChange} />
       <OrderDetails cart={cart} updateCartItem={dispatchCart} />
     </>
