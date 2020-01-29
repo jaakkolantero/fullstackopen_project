@@ -1,6 +1,7 @@
 import React from "react";
 
-const Heading = () => {
+const Heading = ({ content }) => {
+  console.log("content", content);
   return (
     <section className="flex flex-col md:flex-row items-center md:justify-center w-full mt-8">
       <div className="mx-1 sm:mx-8">
@@ -13,16 +14,13 @@ const Heading = () => {
       <div className="max-w-lg mx-4">
         <div className="mt-8">
           <h3 className="text-4xl text-gray-800 font-bold tracking-tight leading-none">
-            Best pizza in town.{" "}
+            {content?.title}{" "}
             <mark className="text-gray-600 bg-transparent">
-              Fresh from the oven.
+              {content?.highlight}
             </mark>
           </h3>
         </div>
-        <p className="mt-6 text-gray-700">
-          Pizza italia has served its customers since 1956. Making pizzas from
-          the finest ingredients in the same oven since the beginning.
-        </p>
+        <p className="mt-6 text-gray-700">{content?.content}</p>
       </div>
     </section>
   );
