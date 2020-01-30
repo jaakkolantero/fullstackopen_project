@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import Navigation from "../components/Navigation";
 import Heading from "../components/Heading";
 import Menu from "../components/Menu";
 import Cart from "../components/Cart";
@@ -81,7 +80,6 @@ const Index = ({ menu, heading }) => {
   };
   return (
     <>
-      <Navigation />
       <Heading content={headingData} />
       <Menu
         items={menuData.menuItems}
