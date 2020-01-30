@@ -1,7 +1,4 @@
-import React, { useReducer, useEffect, useState } from "react";
-import useSWR from "swr";
-import { request } from "graphql-request";
-import Navigation from "../components/Navigation";
+import React, { useReducer } from "react";
 import Heading from "../components/Heading";
 import Menu from "../components/Menu";
 import Cart from "../components/Cart";
@@ -9,6 +6,7 @@ import OrderDetails from "../components/OrderDetails";
 import { MenuItem } from "../components/Menu/MenuItem";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { menuOptions } from "../contentConfiguration/menu";
+import { headingOptions } from "../contentConfiguration/heading";
 
 const initialCart = [];
 
@@ -43,10 +41,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const Index = ({ menu }) => {
+const Index = ({ menu, heading }) => {
   const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
 
   const cms = useCMS();
+  const [headingData, headingState] = useLocalForm(
+    headingOptions(heading, cms)
+  );
   const [menuData, menuState] = useLocalForm(menuOptions(menu, cms));
 
   const writeToDisk = React.useCallback(formState => {
@@ -57,6 +58,7 @@ const Index = ({ menu }) => {
   }, []);
 
   useWatchFormValues(menuState, writeToDisk);
+  useWatchFormValues(headingState, writeToDisk);
 
   const handleAddToCart = (menuItem: MenuItem) => {
     const itemInCart = cart.find(({ id }) => id === menuItem.id);
@@ -78,9 +80,12 @@ const Index = ({ menu }) => {
   };
   return (
     <>
-      <Navigation />
-      <Heading />
-      <Menu items={menuData.menuItems} onAddToCart={handleAddToCart} />
+      <Heading content={headingData} />
+      <Menu
+        items={menuData.menuItems}
+        title={menuData.title}
+        onAddToCart={handleAddToCart}
+      />
       <Cart items={cart} onAmountChange={handleAmountChange} />
       <OrderDetails cart={cart} updateCartItem={dispatchCart} />
     </>
@@ -88,11 +93,12 @@ const Index = ({ menu }) => {
 };
 
 Index.getInitialProps = function(ctx) {
-  let content = require(`../content/menu.json`);
+  let menu = require(`../content/menu.json`);
+  let heading = require(`../content/heading.json`);
+
   return {
-    menu: {
-      ...content,
-    },
+    menu,
+    heading,
   };
 };
 

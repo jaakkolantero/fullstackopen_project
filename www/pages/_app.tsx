@@ -4,6 +4,7 @@ import Head from "next/head";
 import { Tina, TinaCMS } from "tinacms";
 import { GitClient } from "@tinacms/git-client";
 import "../styles/index.css";
+import Navigation from "../components/Navigation";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -36,6 +37,7 @@ export default class MyApp extends App {
     return (
       <Tina position="fixed" cms={this.cms}>
         <Layout>
+          <Navigation />
           <Component {...pageProps} />
         </Layout>
       </Tina>
