@@ -42,13 +42,14 @@ const Menu = ({ items, title, onAddToCart }: MenuProps) => {
         <div className="flex flex-col items-center w-full">
           <h1 className="text-2xl font-bold">{title}</h1>
           <div className="flex justify-center flex-no-wrap">
-            {cols?.map((menuItems, i) => (
+            {cols?.map((col, i) => (
               <div
+                key={`col-${i}`}
                 className={`flex-1 ${
                   i !== cols.length - 1 ? "border-r-2" : ""
                 }`}
               >
-                {menuItems.map(item => (
+                {col.map(item => (
                   <React.Fragment key={item.id}>
                     <MenuItem item={item} onAddToCart={handleAddToCart} />
                   </React.Fragment>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Heading = ({ content }) => {
-  console.log("content", content);
   return (
     <section className="flex flex-col md:flex-row items-center md:justify-center w-full mt-8">
       <div className="mx-1 sm:mx-8">

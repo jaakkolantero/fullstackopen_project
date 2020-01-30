@@ -1,5 +1,3 @@
-import { v4 } from "uuid";
-
 export const headingOptions = (heading, cms) => {
   return {
     id: heading.fileRelativePath, // needs to be unique

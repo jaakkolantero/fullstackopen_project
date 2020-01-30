@@ -99,12 +99,8 @@ Index.getInitialProps = function(ctx) {
   let heading = require(`../content/heading.json`);
 
   return {
-    menu: {
-      ...menu,
-    },
-    heading: {
-      ...heading,
-    },
+    menu,
+    heading,
   };
 };
 
