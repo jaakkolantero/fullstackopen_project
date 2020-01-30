@@ -13,7 +13,7 @@ const OrderDetails = ({ cart, updateCartItem }: OrderDetailsProps) => {
   useEffect(() => {
     let totalPrice = 0;
     for (const item of cart) {
-      totalPrice += parseInt(item.price, 10) * item.amount;
+      totalPrice += parseFloat(item.price) * item.amount;
     }
     setTotal(totalPrice);
   }, [cart]);

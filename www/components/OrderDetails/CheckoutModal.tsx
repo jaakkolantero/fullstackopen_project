@@ -134,7 +134,7 @@ const CheckoutModal = ({
               <div className="flex justify-end text-xl font-bold mr-6 mt-6">
                 <span className="text-gray-600 mr-3">Subtotal:</span>
                 <span className="text-black">
-                  {formatPrice(parseInt(total))}€
+                  {formatPrice(parseFloat(total))}€
                 </span>
               </div>
             </div>
