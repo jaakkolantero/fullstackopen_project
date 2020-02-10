@@ -7,13 +7,19 @@ import { MenuItem } from "../components/Menu/MenuItem";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { menuOptions } from "../contentConfiguration/menu";
 import { headingOptions } from "../contentConfiguration/heading";
+import { get } from "../utils/get";
+import withAuthUser from "../utils/pageWrappers/withAuthUser";
+import logout from "../utils/auth/logout";
+import withAuthUserInfo from "../utils/pageWrappers/withAuthUserInfo";
+import Link from "next/link";
+import Router from "next/router";
 
 const initialCart = [];
 
 export interface CartItem extends MenuItem {
   amount: number;
 }
-interface CartState extends Array<CartItem> {}
+type CartState = Array<CartItem>;
 
 export type CartAction =
   | { type: "add"; payload: MenuItem }
@@ -41,9 +47,17 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const Index = ({ menu, heading }) => {
-  const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
+interface IndexProps {
+  menu: any;
+  heading: any;
+  data: any;
+  AuthUserInfo: any;
+  AuthUser: any;
+}
 
+const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
+  const AuthUser = get(AuthUserInfo, "AuthUser", null);
+  const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
   const cms = useCMS();
   const [headingData, headingState] = useLocalForm(
     headingOptions(heading, cms)
@@ -80,6 +94,38 @@ const Index = ({ menu, heading }) => {
   };
   return (
     <>
+      <div>
+        {!AuthUser ? (
+          <p>
+            You are not signed in.{" "}
+            <Link href={"/auth"}>
+              <a>Sign in</a>
+            </Link>
+          </p>
+        ) : (
+          <div>
+            <p>You are signed in. Email: {AuthUser.email}</p>
+            <p
+              style={{
+                display: "inlinelock",
+                color: "blue",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+              onClick={async () => {
+                try {
+                  await logout();
+                  Router.push("/auth");
+                } catch (e) {
+                  console.error(e);
+                }
+              }}
+            >
+              Log out
+            </p>
+          </div>
+        )}
+      </div>
       <Heading content={headingData} />
       <Menu
         items={menuData.menuItems}
@@ -92,14 +138,32 @@ const Index = ({ menu, heading }) => {
   );
 };
 
-Index.getInitialProps = function(ctx) {
-  let menu = require(`../content/menu.json`);
-  let heading = require(`../content/heading.json`);
+// Just an example.
+const mockFetchData = userId => ({
+  user: {
+    ...(userId && {
+      id: userId,
+    }),
+  },
+  favoriteFood: "pizza",
+});
+
+Index.getInitialProps = ctx => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const menu = require("../content/menu.json");
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const heading = require("../content/heading.json");
+
+  const AuthUserInfo = get(ctx, "myCustomData.AuthUserInfo", null);
+  const AuthUser = get(AuthUserInfo, "AuthUser", null);
+
+  const data = mockFetchData(get(AuthUser, "id", null));
 
   return {
     menu,
     heading,
+    data,
   };
 };
 
-export default Index;
+export default withAuthUser(withAuthUserInfo(Index));

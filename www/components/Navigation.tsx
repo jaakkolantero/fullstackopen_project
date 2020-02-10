@@ -55,6 +55,16 @@ const Navigation = () => {
                 </a>
               </Link>
             </li>
+            <li>
+              <Link href={"/auth"}>
+                <a
+                  className="hover:text-gray-700"
+                  onClick={() => setMenu(false)}
+                >
+                  Sign in
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
       ) : null}

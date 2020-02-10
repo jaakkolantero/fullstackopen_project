@@ -5,3 +5,5 @@ api/.ssh/id_rsa
 www/content/undefined
 with-firebase-authentication-serverless-app/.env
 with-firebase-authentication-serverless-app/pizza-italia-af7be-firebase-adminsdk-skpto-cc46d00a68.json
+www/.env
+www/.env.local
