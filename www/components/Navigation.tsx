@@ -1,9 +1,42 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import logout from "../utils/auth/logout";
+import Router from "next/router";
 
-const Navigation = () => {
+const Navigation = ({ user }) => {
   const [menu, setMenu] = useState(false);
   const toggleMenu = () => setMenu(prev => !prev);
+  const Logout = () => (
+    <>
+      <a
+        className="hover:cursor-pointer hover:text-gray-100 hover:bg-gray-700 py-2 px-4 bg-gray-200 rounded"
+        onClick={async () => {
+          try {
+            await logout();
+            Router.push("/");
+          } catch (e) {
+            console.error(e);
+          }
+        }}
+      >
+        Log out
+      </a>
+      <span className="ml-3 text-xs align-middle">{user?.email}</span>
+    </>
+  );
+  const SignIn = () =>
+    user ? (
+      <Logout />
+    ) : (
+      <Link href={"/auth"}>
+        <a
+          className="hover:cursor-pointer hover:text-gray-100 hover:bg-gray-700 py-2 px-4 bg-gray-200 rounded"
+          onClick={() => setMenu(false)}
+        >
+          Log in
+        </a>
+      </Link>
+    );
   return (
     <>
       <nav className={`w-full bg-white py-2 px-4 ${!menu ? "shadow" : ""}`}>
@@ -14,7 +47,14 @@ const Navigation = () => {
                 Pizza italia
               </span>
             </div>
-            <div className="block">
+            <div className="block flex items-center">
+              {user ? (
+                <div className="text-xs text-gray-700">
+                  <b>hi, </b>
+                  {user?.email}
+                </div>
+              ) : null}
+
               <button
                 onClick={toggleMenu}
                 className="flex items-center px-3 py-2 text-black hover:text-gray-700"
@@ -38,32 +78,37 @@ const Navigation = () => {
             <li className="mb-3">
               <Link href="/">
                 <a
-                  className="hover:text-gray-700"
+                  className="hover:text-gray-700 px-4"
                   onClick={() => setMenu(false)}
                 >
                   Home
                 </a>
               </Link>
             </li>
-            <li>
+            <li className="mb-3">
               <Link href="/about">
                 <a
-                  className="hover:text-gray-700"
+                  className="hover:text-gray-700 px-4"
                   onClick={() => setMenu(false)}
                 >
                   About
                 </a>
               </Link>
             </li>
-            <li>
-              <Link href={"/auth"}>
-                <a
-                  className="hover:text-gray-700"
-                  onClick={() => setMenu(false)}
-                >
-                  Sign in
-                </a>
-              </Link>
+            {user ? (
+              <li className="mb-3">
+                <Link href="/user">
+                  <a
+                    className="hover:text-gray-700 px-4"
+                    onClick={() => setMenu(false)}
+                  >
+                    Account
+                  </a>
+                </Link>
+              </li>
+            ) : null}
+            <li className="">
+              <SignIn />
             </li>
           </ul>
         </div>

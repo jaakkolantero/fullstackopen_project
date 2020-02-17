@@ -13,6 +13,7 @@ import logout from "../utils/auth/logout";
 import withAuthUserInfo from "../utils/pageWrappers/withAuthUserInfo";
 import Link from "next/link";
 import Router from "next/router";
+import WithNavigation from "../components/WithNavigation";
 
 const initialCart = [];
 
@@ -56,7 +57,6 @@ interface IndexProps {
 }
 
 const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
-  const AuthUser = get(AuthUserInfo, "AuthUser", null);
   const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
   const cms = useCMS();
   const [headingData, headingState] = useLocalForm(
@@ -94,46 +94,16 @@ const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
   };
   return (
     <>
-      <div>
-        {!AuthUser ? (
-          <p>
-            You are not signed in.{" "}
-            <Link href={"/auth"}>
-              <a>Sign in</a>
-            </Link>
-          </p>
-        ) : (
-          <div>
-            <p>You are signed in. Email: {AuthUser.email}</p>
-            <p
-              style={{
-                display: "inlinelock",
-                color: "blue",
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
-              onClick={async () => {
-                try {
-                  await logout();
-                  Router.push("/auth");
-                } catch (e) {
-                  console.error(e);
-                }
-              }}
-            >
-              Log out
-            </p>
-          </div>
-        )}
-      </div>
-      <Heading content={headingData} />
-      <Menu
-        items={menuData.menuItems}
-        title={menuData.title}
-        onAddToCart={handleAddToCart}
-      />
-      <Cart items={cart} onAmountChange={handleAmountChange} />
-      <OrderDetails cart={cart} updateCartItem={dispatchCart} />
+      <WithNavigation>
+        <Heading content={headingData} />
+        <Menu
+          items={menuData.menuItems}
+          title={menuData.title}
+          onAddToCart={handleAddToCart}
+        />
+        <Cart items={cart} onAmountChange={handleAmountChange} />
+        <OrderDetails cart={cart} updateCartItem={dispatchCart} />
+      </WithNavigation>
     </>
   );
 };
@@ -154,16 +124,10 @@ Index.getInitialProps = ctx => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const heading = require("../content/heading.json");
 
-  const AuthUserInfo = get(ctx, "myCustomData.AuthUserInfo", null);
-  const AuthUser = get(AuthUserInfo, "AuthUser", null);
-
-  const data = mockFetchData(get(AuthUser, "id", null));
-
   return {
     menu,
     heading,
-    data,
   };
 };
 
-export default withAuthUser(withAuthUserInfo(Index));
+export default Index;
