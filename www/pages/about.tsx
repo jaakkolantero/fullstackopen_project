@@ -4,9 +4,11 @@ import { aboutOptions } from "../contentConfiguration/about";
 import WithNavigation from "../components/WithNavigation";
 
 interface AboutProps {
-  fileRelativePath: string;
-  title: string;
-  content: string;
+  about: {
+    fileRelativePath: string;
+    title: string;
+    content: string;
+  };
 }
 
 const About = ({ about }: AboutProps) => {

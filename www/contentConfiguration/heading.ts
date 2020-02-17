@@ -1,4 +1,7 @@
-export const headingOptions = (heading, cms) => {
+import { HeadingCMS } from "../pages";
+import { TinaCMS } from "tinacms";
+
+export const headingOptions = (heading: HeadingCMS, cms: TinaCMS) => {
   return {
     id: heading.fileRelativePath, // needs to be unique
     label: "Heading",

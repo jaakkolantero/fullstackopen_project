@@ -1,6 +1,8 @@
 import { v4 } from "uuid";
+import { MenuCMS } from "../pages";
+import { TinaCMS } from "tinacms";
 
-export const menuOptions = (menu, cms) => {
+export const menuOptions = (menu: MenuCMS, cms: TinaCMS) => {
   return {
     id: menu.fileRelativePath, // needs to be unique
     label: "Menu",

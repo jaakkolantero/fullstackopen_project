@@ -7,7 +7,7 @@ import Document, {
   DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { get } from "../utils/get";
+import { get } from "lodash/object";
 
 interface AuthUserInfo {
   AuthUserInfo: {

@@ -1,1 +1,99 @@
-{"fileRelativePath":"menu.json","title":"Pizza Menu","menuItems":[{"id":"6338e800-3b53-40a8-bc20-e2172ccfab44","name":"Pizza Speciale","price":"9.90","ingredients":[{"name":"New ingredient","id":"37e92d9c-58f9-4511-88c0-ad10c91465a6"},{"name":"New ingredient","id":"fdce7d21-17b1-4fb0-a20e-9eaa833ea83d"},{"name":"New ingredient","id":"0cd85bcb-1e00-4c7b-a1ba-6037fa4bc84f"}]},{"name":"New Item","price":"0","id":"c0884321-f298-41e3-8608-0c75eb14c9fc","ingredients":[{"name":"New ingredient","id":"3f7ea92c-1169-40d5-a9d8-733b9cd4b485"},{"name":"New ingredient","id":"7e4468f0-5d20-4578-a5c0-5b6eb5397ab1"},{"name":"New ingredient","id":"e7c125fd-c31d-4a32-b2cb-cbf069b9a53c"},{"name":"New ingredient","id":"f7ff7c52-8ff5-4713-9bf6-05c86140cfb9"}]},{"name":"New Item","price":"0","id":"1a404cb5-cf12-4e6d-8e01-53196bf330b0","ingredients":[{"name":"New ingredient","id":"69f07b7a-0bf6-42f5-858c-ee393d5d01bc"},{"name":"New ingredient","id":"a2b1d0fe-5469-41a9-b4d7-7aa16988f46e"},{"name":"New ingredient","id":"ec702a1d-6bf4-43fb-9beb-71ade2a48cce"}]},{"name":"Peppe","id":"3edc93f1-7171-4517-af95-02787e960bd0","ingredients":[{"name":"New ingredient","id":"67a4a0e7-6470-4add-bf62-f68d4b66b4ce"},{"name":"New ingredient","id":"d4ce82ce-6b71-4f43-a4e2-f9c8b765b255"},{"name":"New ingredient","id":"539b53f8-7928-4a7e-bdf8-819765970c2f"},{"name":"New ingredient","id":"f31d950e-2562-4a82-872b-4dfe033c1e87"}],"price":"12.9"},{"name":"Margherita","id":"60ebb8e7-0150-4c5c-95fa-063e742b2b31","ingredients":[{"name":"Mozzarella","id":"94882492-1978-43bc-aa58-939fdfb2e41e"},{"name":"Basil","id":"67ff9452-cb6b-4468-9127-cb90ebe6c342"}],"price":"10"}]}
+{
+  "fileRelativePath": "menu.json",
+  "title": "Pizza Menu",
+  "menuItems": [
+    {
+      "id": "6338e800-3b53-40a8-bc20-e2172ccfab44",
+      "name": "Pizza Speciale",
+      "price": "9.90",
+      "ingredients": [
+        {
+          "name": "New ingredient",
+          "id": "37e92d9c-58f9-4511-88c0-ad10c91465a6"
+        },
+        {
+          "name": "New ingredient",
+          "id": "fdce7d21-17b1-4fb0-a20e-9eaa833ea83d"
+        },
+        {
+          "name": "New ingredient",
+          "id": "0cd85bcb-1e00-4c7b-a1ba-6037fa4bc84f"
+        }
+      ]
+    },
+    {
+      "name": "New Item",
+      "price": "0",
+      "id": "c0884321-f298-41e3-8608-0c75eb14c9fc",
+      "ingredients": [
+        {
+          "name": "New ingredient",
+          "id": "3f7ea92c-1169-40d5-a9d8-733b9cd4b485"
+        },
+        {
+          "name": "New ingredient",
+          "id": "7e4468f0-5d20-4578-a5c0-5b6eb5397ab1"
+        },
+        {
+          "name": "New ingredient",
+          "id": "e7c125fd-c31d-4a32-b2cb-cbf069b9a53c"
+        },
+        {
+          "name": "New ingredient",
+          "id": "f7ff7c52-8ff5-4713-9bf6-05c86140cfb9"
+        }
+      ]
+    },
+    {
+      "name": "New Item",
+      "price": "0",
+      "id": "1a404cb5-cf12-4e6d-8e01-53196bf330b0",
+      "ingredients": [
+        {
+          "name": "New ingredient",
+          "id": "69f07b7a-0bf6-42f5-858c-ee393d5d01bc"
+        },
+        {
+          "name": "New ingredient",
+          "id": "a2b1d0fe-5469-41a9-b4d7-7aa16988f46e"
+        },
+        {
+          "name": "New ingredient",
+          "id": "ec702a1d-6bf4-43fb-9beb-71ade2a48cce"
+        }
+      ]
+    },
+    {
+      "name": "Peppe",
+      "id": "3edc93f1-7171-4517-af95-02787e960bd0",
+      "ingredients": [
+        {
+          "name": "New ingredient",
+          "id": "67a4a0e7-6470-4add-bf62-f68d4b66b4ce"
+        },
+        {
+          "name": "New ingredient",
+          "id": "d4ce82ce-6b71-4f43-a4e2-f9c8b765b255"
+        },
+        {
+          "name": "New ingredient",
+          "id": "539b53f8-7928-4a7e-bdf8-819765970c2f"
+        },
+        {
+          "name": "New ingredient",
+          "id": "f31d950e-2562-4a82-872b-4dfe033c1e87"
+        }
+      ],
+      "price": "12.9"
+    },
+    {
+      "name": "Margherita",
+      "id": "60ebb8e7-0150-4c5c-95fa-063e742b2b31",
+      "ingredients": [
+        { "name": "Mozzarella", "id": "94882492-1978-43bc-aa58-939fdfb2e41e" },
+        { "name": "Basil", "id": "67ff9452-cb6b-4468-9127-cb90ebe6c342" }
+      ],
+      "price": "10"
+    }
+  ]
+}

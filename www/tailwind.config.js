@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 module.exports = {
   prefix: "",
   important: false,

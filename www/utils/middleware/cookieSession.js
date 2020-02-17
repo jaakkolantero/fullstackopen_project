@@ -1,4 +1,4 @@
-import cookieSession from 'cookie-session'
+import cookieSession from "cookie-session";
 
 export const addSession = (req, res) => {
   // Ensure that session secrets are set.
@@ -6,8 +6,8 @@ export const addSession = (req, res) => {
     !(process.env.SESSION_SECRET_CURRENT && process.env.SESSION_SECRET_PREVIOUS)
   ) {
     throw new Error(
-      'Session secrets must be set as env vars `SESSION_SECRET_CURRENT` and `SESSION_SECRET_PREVIOUS`.'
-    )
+      "Session secrets must be set as env vars `SESSION_SECRET_CURRENT` and `SESSION_SECRET_PREVIOUS`."
+    );
   }
 
   // An array is useful for rotating secrets without invalidating old sessions.
@@ -16,7 +16,7 @@ export const addSession = (req, res) => {
   const sessionSecrets = [
     process.env.SESSION_SECRET_CURRENT,
     process.env.SESSION_SECRET_PREVIOUS,
-  ]
+  ];
 
   // Example:
   // https://github.com/billymoon/micro-cookie-session
@@ -27,15 +27,16 @@ export const addSession = (req, res) => {
     maxAge: 604800000, // week
     httpOnly: true,
     overwrite: true,
-  })
-  includeSession(req, res, () => {})
-}
+  });
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  includeSession(req, res, () => {});
+};
 
 export default handler => (req, res) => {
   try {
-    addSession(req, res)
+    addSession(req, res);
   } catch (e) {
-    return res.status(500).json({ error: 'Could not get user session.' })
+    return res.status(500).json({ error: "Could not get user session." });
   }
-  return handler(req, res)
-}
+  return handler(req, res);
+};

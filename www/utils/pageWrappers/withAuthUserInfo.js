@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { AuthUserInfoContext } from "../auth/hooks";
-import { get } from "../get";
+import { get } from "lodash/object";
 
 // Provides an AuthUserInfo prop to the composed component.
 export default ComposedComponent => {

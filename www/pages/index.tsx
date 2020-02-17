@@ -7,13 +7,8 @@ import { MenuItem } from "../components/Menu/MenuItem";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { menuOptions } from "../contentConfiguration/menu";
 import { headingOptions } from "../contentConfiguration/heading";
-import { get } from "../utils/get";
-import withAuthUser from "../utils/pageWrappers/withAuthUser";
-import logout from "../utils/auth/logout";
-import withAuthUserInfo from "../utils/pageWrappers/withAuthUserInfo";
-import Link from "next/link";
-import Router from "next/router";
 import WithNavigation from "../components/WithNavigation";
+import { NextPage } from "next";
 
 const initialCart = [];
 
@@ -48,15 +43,23 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-interface IndexProps {
-  menu: any;
-  heading: any;
-  data: any;
-  AuthUserInfo: any;
-  AuthUser: any;
+export interface MenuCMS {
+  fileRelativePath: string;
+  title: string;
+  menuItems: Array<MenuItem>;
+}
+export interface HeadingCMS {
+  fileRelativePath: string;
+  title: string;
+  highlight: string;
+  content: string;
+}
+export interface IndexProps {
+  menu: MenuCMS;
+  heading: HeadingCMS;
 }
 
-const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
+const Index: NextPage<IndexProps> = ({ menu, heading }: IndexProps) => {
   const [cart, dispatchCart] = useReducer(cartReducer, initialCart);
   const cms = useCMS();
   const [headingData, headingState] = useLocalForm(
@@ -74,7 +77,7 @@ const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
   useWatchFormValues(menuState, writeToDisk);
   useWatchFormValues(headingState, writeToDisk);
 
-  const handleAddToCart = (menuItem: MenuItem) => {
+  const handleAddToCart = (menuItem: MenuItem): void => {
     const itemInCart = cart.find(({ id }) => id === menuItem.id);
     if (itemInCart) {
       dispatchCart({
@@ -86,7 +89,7 @@ const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
     }
   };
 
-  const handleAmountChange = (cartItem: CartItem) => {
+  const handleAmountChange = (cartItem: CartItem): void => {
     dispatchCart({
       type: "update",
       payload: cartItem,
@@ -108,17 +111,8 @@ const Index = ({ menu, heading, data, AuthUserInfo = null }: IndexProps) => {
   );
 };
 
-// Just an example.
-const mockFetchData = userId => ({
-  user: {
-    ...(userId && {
-      id: userId,
-    }),
-  },
-  favoriteFood: "pizza",
-});
-
-Index.getInitialProps = ctx => {
+// eslint-disable-next-line @typescript-eslint/unbound-method
+Index.getInitialProps = (): IndexProps => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const menu = require("../content/menu.json");
   // eslint-disable-next-line @typescript-eslint/no-var-requires

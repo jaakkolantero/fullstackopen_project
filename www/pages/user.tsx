@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import withAuthUserInfo from "../utils/pageWrappers/withAuthUserInfo";
 import withAuthUser from "../utils/pageWrappers/withAuthUser";
-import { get } from "../utils/get";
+import { get } from "lodash/object";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import initFirebase from "../utils/auth/initFirebase";
