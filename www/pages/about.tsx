@@ -1,10 +1,15 @@
 import React from "react";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { aboutOptions } from "../contentConfiguration/about";
-import Navigation from "../components/Navigation";
 import WithNavigation from "../components/WithNavigation";
 
-const About = ({ about }) => {
+interface AboutProps {
+  fileRelativePath: string;
+  title: string;
+  content: string;
+}
+
+const About = ({ about }: AboutProps) => {
   const cms = useCMS();
   const [aboutData, aboutState] = useLocalForm(aboutOptions(about, cms));
 
@@ -34,6 +39,7 @@ const About = ({ about }) => {
 };
 
 About.getInitialProps = function(ctx) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const about = require("../content/about.json");
 
   return {
