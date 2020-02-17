@@ -2,6 +2,7 @@ import React from "react";
 import { useCMS, useLocalForm, useWatchFormValues } from "tinacms";
 import { aboutOptions } from "../contentConfiguration/about";
 import WithNavigation from "../components/WithNavigation";
+import { NextPage } from "next";
 
 interface AboutProps {
   about: {
@@ -11,7 +12,7 @@ interface AboutProps {
   };
 }
 
-const About = ({ about }: AboutProps) => {
+const About: NextPage<AboutProps> = ({ about }: AboutProps) => {
   const cms = useCMS();
   const [aboutData, aboutState] = useLocalForm(aboutOptions(about, cms));
 
@@ -40,7 +41,8 @@ const About = ({ about }: AboutProps) => {
   );
 };
 
-About.getInitialProps = function(ctx) {
+// eslint-disable-next-line @typescript-eslint/unbound-method
+About.getInitialProps = function(): AboutProps {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const about = require("../content/about.json");
 
