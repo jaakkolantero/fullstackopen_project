@@ -6,7 +6,7 @@ import { CartItem, CartAction } from "../../pages";
 interface CheckoutModalProps {
   cart: CartItem[];
   close: () => void;
-  total: string;
+  total: number;
   updateCartItem: (cart: CartAction) => void;
 }
 
@@ -78,7 +78,7 @@ const CheckoutModal = ({
     );
     const appendtotalForEmail = [...cartForEmail, `Total: <b>${total}€</b>`];
     const emailMessage = appendtotalForEmail.join("");
-    setContact({ ...contact, message: emailMessage, total: total });
+    setContact({ ...contact, message: emailMessage, total: total.toString() });
   };
 
   useEffect(() => {
@@ -132,9 +132,7 @@ const CheckoutModal = ({
               ))}
               <div className="flex justify-end text-xl font-bold mr-6 mt-6">
                 <span className="text-gray-600 mr-3">Subtotal:</span>
-                <span className="text-black">
-                  {formatPrice(parseFloat(total))}€
-                </span>
+                <span className="text-black">{formatPrice(total)}€</span>
               </div>
             </div>
             <form

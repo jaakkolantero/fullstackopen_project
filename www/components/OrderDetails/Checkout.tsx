@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useModal from "../../hooks/useModal";
 import Modal from "./Modal";
 import CheckoutModal from "./CheckoutModal";
+import { CartItem, CartAction } from "../../pages";
+import { NextPage } from "next";
 
-const Checkout = ({ cart, total, updateCartItem }) => {
+interface CheckoutProps {
+  cart: CartItem[];
+  total: number;
+  updateCartItem: (action: CartAction) => void;
+}
+
+const Checkout: NextPage<CheckoutProps> = ({
+  cart,
+  total,
+  updateCartItem,
+}: CheckoutProps) => {
   const { open: openCheckout, close: closeCheckout } = useModal("checkout");
-  const handleOpenCheckout = () => {
+  const handleOpenCheckout = (): void => {
     if (cart.length) {
       openCheckout();
     }
