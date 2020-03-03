@@ -1,6 +1,20 @@
 {
   "name": "pizza-italia",
   "version": 2,
+  "env": {
+    "FIREBASE_CLIENT_EMAIL": "@firebase-client-email-pizza-italia",
+    "FIREBASE_PRIVATE_KEY": "@firebase-private-key-pizza-italia",
+    "SESSION_SECRET_CURRENT": "@session-secret-current-pizza-italia",
+    "SESSION_SECRET_PREVIOUS": "@session-secret-previous-pizza-italia"
+  },
+  "build": {
+    "env": {
+      "FIREBASE_DATABASE_URL": "@firebase-database-url-pizza-italia",
+      "FIREBASE_PROJECT_ID": "@firebase-project-id-pizza-italia",
+      "FIREBASE_PUBLIC_API_KEY": "@firebase-public-api-key-pizza-italia",
+      "FIREBASE_AUTH_DOMAIN": "@firebase-auth-domain-pizza-italia"
+    }
+  },
   "github": {
     "enabled": true
   },
@@ -8,8 +22,7 @@
     {
       "src": "www/next.config.js",
       "use": "@now/next"
-    },
-    { "src": "api/**/*.js", "use": "@now/node" }
+    }
   ],
   "routes": [
     {

@@ -7,3 +7,8 @@ with-firebase-authentication-serverless-app/.env
 with-firebase-authentication-serverless-app/pizza-italia-af7be-firebase-adminsdk-skpto-cc46d00a68.json
 www/.env
 www/.env.local
+.env
+.env.build
+build.env
+pizza-italia-af7be-firebase-adminsdk-skpto-6de4f11caa.json
+privatekey.txt
