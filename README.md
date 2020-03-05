@@ -25,7 +25,7 @@
   <p align="center">
     FULL STACK WEB DEVELOPMENT PROJECT
     <br /><br />
-    <a href="https://pizza-italia.now.sh/">View Demo</a>
+    <a href="https://pizzaitalia.now.sh/">View Demo</a>
     ·
     <a href="https://github.com/jaakkolantero/fullstackopen_project/issues">Report Bug</a>
     ·
@@ -53,7 +53,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://pizza-italia.now.sh/)
+[![Product Name Screen Shot][product-screenshot]](https://pizzaitalia.now.sh/)
 
 Open university [FULL STACK WEB DEVELOPMENT PROJECT](https://courses.helsinki.fi/en/aytkt21010/129098202) where I built a serverless restaurant app with git-based cms [TinaCMS](https://tinacms.org/). Authentication is done with Google's Firebase.
 
