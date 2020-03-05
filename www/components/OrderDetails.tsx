@@ -21,17 +21,17 @@ const OrderDetails = ({ cart, updateCartItem }: OrderDetailsProps) => {
   return (
     <div className="flex flex-col items-center w-full mb-6 text-gray-600 mt-3">
       <div className="w-full flex flex-col max-w-lg">
-        <div className="w-full mb-3">
-          Estimated delivery{" "}
-          <mark className="bg-transparent text-gray-700">30</mark> min
-        </div>
-        <div className="w-full">
-          Total{" "}
-          <mark className="bg-transparent text-gray-700 text-xl">
-            {formatPrice(total)}
-          </mark>{" "}
-          €
-        </div>
+        {cart?.length ? (
+          <div className="w-full">
+            Total{" "}
+            <mark className="bg-transparent text-gray-700 text-xl">
+              {formatPrice(total)}
+            </mark>{" "}
+            €
+          </div>
+        ) : (
+          <div>Your cart is empty</div>
+        )}
       </div>
       <Checkout cart={cart} total={total} updateCartItem={updateCartItem} />
     </div>
