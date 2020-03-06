@@ -75,15 +75,15 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
 - npm
 
 ```sh
 npm install npm@latest -g
 ```
 
-### Installation
+### Installation / Getting started
+
+#### NOTE: tested on linux(ubuntu)
 
 1. Clone the repo
 
@@ -91,11 +91,42 @@ npm install npm@latest -g
 git clone https://github.com/jaakkolantero/fullstackopen_project.git
 ```
 
-2. Install NPM packages
+2. Setup .env in www folder
 
 ```sh
-npm install
+cd fullstackopen_project/
+touch www/.env
+# open with your editor ex.
+code www/.env
 ```
+
+.env
+
+```sh
+# Update these with your Firebase app's values.
+FIREBASE_AUTH_DOMAIN=pizza-italia-example.firebaseapp.com
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk-skpto@pizza-italia-example.iam.gserviceaccount.com
+FIREBASE_DATABASE_URL=https://pizza-italia-example.firebaseio.com
+FIREBASE_PROJECT_ID=pizza-italia-example
+FIREBASE_PUBLIC_API_KEY=AIzaSyDcIEXAMPLE8sUoypkIOOKJgQ
+
+# Your Firebase private key.
+FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMIIEvQIBADAiDqFc19dgtKt\n...\n-----END PRIVATE KEY-----\n
+
+# Secrets used by cookie-session.
+SESSION_SECRET_CURRENT=someSecretValue
+SESSION_SECRET_PREVIOUS=anotherSecretValue
+
+```
+
+3. Install and run project
+
+```sh
+npm run install:all
+npm run start:tinacms
+```
+
+[http://localhost:3000/](http://localhost:3000/)
 
 <!-- USAGE EXAMPLES -->
 
@@ -103,17 +134,13 @@ npm install
 
 Currently TinaCMS editor is only usable when running locally. I'm working on serverless version of TinaCMS github backend but in the meantime updating content needs a bit more work.
 
+You can get a feel of TinaCMS editor in demo(Heading content is editable although save doesn't obviously work).
+
 <!-- ROADMAP -->
 
 ## Roadmap
 
 See the [open issues](https://github.com/jaakkolantero/repo/issues) for a list of proposed features (and known issues).
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<!-- CONTACT -->
 
 ## Contact
 
