@@ -1,7 +1,10 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "install:all": "npm install --prefix www & npm install --prefix api",
+    "start": "npm run dev --prefix www",
+    "start:tinacms": "npm run start & npm run start --prefix api"
   },
   "devDependencies": {
     "commitizen": "^4.0.3",
