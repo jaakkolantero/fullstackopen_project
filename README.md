@@ -136,6 +136,8 @@ Currently TinaCMS editor is only usable when running locally. I'm working on ser
 
 You can get a feel of TinaCMS editor in demo(Heading content is editable although save doesn't obviously work).
 
+Orders in demo are sent to [https://maildrop.cc/inbox/pizzaitalia](https://maildrop.cc/inbox/pizzaitalia) (it takes some time for the mail to appear in inbox)
+
 <!-- ROADMAP -->
 
 ## Roadmap
