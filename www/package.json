@@ -11,7 +11,7 @@
   "dependencies": {
     "@tinacms/git-client": "^0.4.1",
     "@zeit/next-css": "^1.0.1",
-    "apollo-server-micro": "^2.9.12",
+    "apollo-server-micro": "^2.14.2",
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.8.1",
